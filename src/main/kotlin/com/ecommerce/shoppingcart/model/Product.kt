@@ -1,11 +1,29 @@
 package com.ecommerce.shoppingcart.model
 
-open class Product (
 
-    var name: String = "",
+import java.util.*
+import javax.persistence.*
 
-    var description: String = "",
+@Entity(name = "Product")
+data class Product(
 
-    var price: Double = 0.0) {
-        open fun getDiscount() = price;
-}
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "sku", nullable = false)
+    val sku: UUID = UUID.randomUUID(),
+
+    @Column
+    var name: String,
+
+    @Column
+    var description: String,
+
+    @Column
+    var price: Double,
+
+    @Column
+    var PercentageDiscount: Double,
+
+    @Column
+    var category: String
+)
