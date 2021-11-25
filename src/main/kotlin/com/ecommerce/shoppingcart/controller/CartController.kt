@@ -43,9 +43,9 @@ class CartController(private val cartService: CartService) {
     }
 
     @GetMapping("/allProducts/{id}")
-    fun getProductsFromRepository(@PathVariable id: String): ResponseEntity<List<Cart>> {
-        val cart = cartService.getProductsFromRepository(id)
-        return ResponseEntity<List<Cart>>(HttpStatus.NO_CONTENT)
+    fun getProductsFromRepository(@PathVariable id: String): ResponseEntity<List<Product>> {
+        val products = cartService.getProductsFromRepository(id)
+        return ResponseEntity<List<Product>>(products, HttpStatus.OK)
     }
 
     @PostMapping("/saveProduct/{id}")
